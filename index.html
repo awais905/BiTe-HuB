@@ -10,39 +10,55 @@
 body{background-color:#1a0b0b;color:#fff;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;border:none;outline:none;}
+
 /* Navbar */
 nav{background-color:#800000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;position:sticky;top:0;z-index:100;flex-wrap:wrap;}
-nav .logo{font-size:1.8rem;font-weight:700;color:gold;}
-.nav-buttons{display:flex;gap:10px;flex-wrap:wrap;}
-.nav-buttons a{background-color:gold;color:#800000;padding:8px 15px;border-radius:5px;font-weight:600;transition:0.3s;text-align:center;}
-.nav-buttons a:hover{transform:scale(1.1);box-shadow:0 0 10px gold;}
+nav .logo{font-size:2rem;font-weight:700;color:gold;}
+.nav-buttons{display:flex;gap:12px;flex-wrap:wrap;}
+.nav-buttons a{background-color:gold;color:#800000;padding:10px 20px;border-radius:6px;font-weight:600;transition:0.3s;text-align:center;}
+.nav-buttons a:hover{transform:scale(1.1);box-shadow:0 0 15px gold;}
+
 /* Language dropdown */
 .lang-dropdown{position:absolute;top:15px;right:30px;z-index:200;}
 .lang-dropdown select{padding:6px 12px;border-radius:5px;border:none;font-weight:600;background-color:gold;color:#800000;}
-/* Hero carousel */
-.hero{position:relative;height:90vh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;}
-.hero img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.5);opacity:0;transition:opacity 1s ease-in-out;}
-.hero img.active{opacity:1;}
-.hero-content{position:relative;z-index:2;color:gold;animation:fadeIn 2s ease-in-out;}
+
+/* Hero section with multiple food images */
+.hero{position:relative;height:90vh;display:flex;justify-content:center;align-items:center;overflow:hidden;text-align:center;}
+.hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(26,11,11,0.7), rgba(26,11,11,0.7));z-index:1;}
+.food-images{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;gap:20px;z-index:2;}
+.food-images img{width:250px;height:250px;border-radius:20px;object-fit:cover;box-shadow:0 0 20px rgba(0,0,0,0.5);animation:float 3s ease-in-out infinite;}
+.food-images img:nth-child(2){animation-delay:0.5s;}
+.food-images img:nth-child(3){animation-delay:1s;}
+.food-images img:nth-child(4){animation-delay:1.5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px);}}
+
+/* Hero text */
+.hero-content{position:relative;z-index:3;color:gold;animation:fadeIn 2s ease-in-out;text-align:center;}
 @keyframes fadeIn{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
-.hero-content h1{font-size:3rem;margin-bottom:15px;}
+.hero-content h1{font-size:3rem;margin-bottom:15px;text-shadow:2px 2px #000;}
 .hero-content p{font-size:1.3rem;margin-bottom:25px;color:#fff;text-shadow:1px 1px #000;}
-.hero-content .hero-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
-.hero-content .hero-buttons button{background-color:gold;color:#800000;padding:12px 25px;border-radius:5px;font-weight:600;transition:0.3s;}
+.hero-content .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.hero-content .hero-buttons button{background-color:gold;color:#800000;padding:12px 30px;border-radius:6px;font-weight:700;transition:0.3s;animation:buttonPulse 2s infinite;}
 .hero-content .hero-buttons button:hover{transform:scale(1.1);background-color:#ffd700;}
+@keyframes buttonPulse{0%,100%{box-shadow:0 0 15px gold;}50%{box-shadow:0 0 30px #ffd700;}}
+
 /* WhatsApp popup */
-.whatsapp-popup{position:fixed;bottom:20px;right:20px;background-color:gold;color:#800000;padding:15px 25px;border-radius:10px;font-weight:600;box-shadow:0 0 15px rgba(0,0,0,0.5);z-index:200;cursor:pointer;animation:popupAnim 0.7s ease-in-out;transition:0.3s;}
+.whatsapp-popup{position:fixed;bottom:20px;right:20px;background-color:gold;color:#800000;padding:15px 25px;border-radius:12px;font-weight:600;box-shadow:0 0 20px rgba(0,0,0,0.6);z-index:200;cursor:pointer;animation:popupAnim 0.7s ease-in-out;transition:0.3s;}
 .whatsapp-popup:hover{transform:scale(1.05);background-color:#ffd700;}
 @keyframes popupAnim{0%{transform:translateY(50px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
+
 /* Footer */
 footer{background-color:#800000;text-align:center;padding:20px;margin-top:30px;}
 footer p{font-size:0.9rem;}
+
 /* Responsive */
 @media(max-width:768px){
 .hero-content h1{font-size:2rem;}
 .hero-content p{font-size:1rem;}
 nav{flex-direction:column;align-items:flex-start;gap:10px;}
 .lang-dropdown{top:70px;right:20px;}
+.food-images{flex-direction:column;}
+.food-images img{width:200px;height:200px;}
 }
 </style>
 </head>
@@ -50,36 +66,39 @@ nav{flex-direction:column;align-items:flex-start;gap:10px;}
 
 <!-- Navbar -->
 <nav>
-    <div class="logo">BiteHub</div>
-    <div class="nav-buttons">
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="about.html">About</a>
-        <a href="prices.html">Prices</a>
-    </div>
+<div class="logo">BiteHub</div>
+<div class="nav-buttons">
+<a href="index.html">Home</a>
+<a href="menu.html">Menu</a>
+<a href="about.html">About</a>
+<a href="prices.html">Prices</a>
+</div>
 </nav>
 
 <!-- Language Dropdown -->
 <div class="lang-dropdown">
-    <select id="languageSelect" onchange="changeLanguage()">
-        <option value="en">English</option>
-        <option value="ur">Urdu</option>
-        <option value="skr">Saraiki</option>
-    </select>
+<select id="languageSelect" onchange="changeLanguage()">
+<option value="en">English</option>
+<option value="ur">Urdu</option>
+<option value="skr">Saraiki</option>
+</select>
 </div>
 
 <!-- Hero Section -->
 <section class="hero">
-    <img src="https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="active" alt="Pizza">
-    <img src="https://images.unsplash.com/photo-1617196038762-b8e5fa29e3da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Burger">
-    <img src="https://images.unsplash.com/photo-1617196038701-9b7e873a8ff7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Fries">
-    <div class="hero-content">
-        <h1 id="heroTitle">خوش آمدید</h1>
-        <p id="heroSub">Hot & Tasty Fast Food Delivered!</p>
-        <div class="hero-buttons">
-            <button onclick="window.location='menu.html'">Order Now</button>
-        </div>
-    </div>
+<div class="food-images">
+<img src="https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Pizza">
+<img src="https://images.unsplash.com/photo-1617196038762-b8e5fa29e3da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Burger">
+<img src="https://images.unsplash.com/photo-1617196038701-9b7e873a8ff7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Fries">
+<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Drink">
+</div>
+<div class="hero-content">
+<h1 id="heroTitle">خوش آمدید</h1>
+<p id="heroSub">Hot & Tasty Fast Food Delivered!</p>
+<div class="hero-buttons">
+<button onclick="window.location='menu.html'">Order Now</button>
+</div>
+</div>
 </section>
 
 <!-- WhatsApp Popup -->
@@ -87,7 +106,7 @@ nav{flex-direction:column;align-items:flex-start;gap:10px;}
 
 <!-- Footer -->
 <footer>
-    <p>© 2025 BiteHub – All Rights Reserved</p>
+<p>© 2025 BiteHub – All Rights Reserved</p>
 </footer>
 
 <script>
@@ -107,15 +126,6 @@ window.open(`https://wa.me/03080432842?text=${text}`,'_blank');}
 
 // Show popup on page load
 window.onload=()=>{document.getElementById('whatsappPopup').style.display='block';}
-
-// Hero carousel
-let slides=document.querySelectorAll('.hero img');
-let current=0;
-setInterval(()=>{
-slides[current].classList.remove('active');
-current=(current+1)%slides.length;
-slides[current].classList.add('active');
-},4000);
 </script>
 
 </body>
