@@ -13,61 +13,39 @@
     button { cursor: pointer; }
 
     /* ===== Navbar ===== */
-    nav { background-color: #800000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 0; z-index: 100; }
+    nav { background-color: #800000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
     nav .logo { font-size: 1.8rem; font-weight: 700; color: gold; }
-    nav ul { display: flex; list-style: none; gap: 25px; }
-    nav ul li a:hover { color: #ffd700; }
+    .nav-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .nav-buttons a { background-color: gold; color: #800000; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
+    .nav-buttons a:hover { background-color: #ffd700; }
 
     /* ===== Hero Section ===== */
-    .hero { background: url('https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNjA3fDB8MHxzZWFyY2h8MTR8fHBpenphfGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=1080') center/cover no-repeat; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero { background: url('https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
     .hero h1 { font-size: 3rem; margin-bottom: 20px; color: gold; text-shadow: 2px 2px #000; }
     .hero p { font-size: 1.2rem; margin-bottom: 30px; }
     .hero button { background-color: gold; color: #800000; padding: 15px 30px; border: none; font-weight: 600; border-radius: 5px; transition: 0.3s; }
     .hero button:hover { background-color: #ffd700; }
 
-    /* ===== Sections ===== */
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    /* ===== Language Dropdown ===== */
+    .lang-dropdown { position: absolute; top: 20px; right: 30px; }
+    .lang-dropdown select { padding: 8px 12px; border-radius: 5px; border: none; font-weight: 600; }
 
-    /* Menu Preview */
-    .menu-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-    .menu-item { background-color: #2a0f0f; border-radius: 10px; overflow: hidden; text-align: center; transition: 0.3s; }
-    .menu-item img { width: 100%; height: 180px; object-fit: cover; }
-    .menu-item h3 { margin: 10px 0; color: gold; }
-    .menu-item p { padding: 0 10px; font-size: 0.9rem; }
-    .menu-item button { margin: 10px 0 15px 0; background-color: gold; color: #800000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: 600; transition: 0.3s; }
-    .menu-item button:hover { background-color: #ffd700; }
+    /* ===== WhatsApp Pop-up ===== */
+    .whatsapp-popup { position: fixed; bottom: 20px; right: 20px; background-color: gold; color: #800000; padding: 15px 25px; border-radius: 10px; font-weight: 600; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 200; animation: popupAnim 0.7s ease-in-out; cursor: pointer; }
+    @keyframes popupAnim { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    .whatsapp-popup:hover { background-color: #ffd700; }
 
-    /* About & Contact Preview */
-    .about, .contact { background-color: #2a0f0f; border-radius: 10px; padding: 30px; text-align: center; }
-    .about h2, .contact h2 { color: gold; margin-bottom: 20px; }
-    .about p, .contact p { margin-bottom: 20px; }
-    .about a, .contact a { background-color: gold; color: #800000; padding: 10px 25px; border-radius: 5px; font-weight: 600; transition: 0.3s; display: inline-block; }
-    .about a:hover, .contact a:hover { background-color: #ffd700; }
-
-    /* Footer */
+    /* ===== Footer ===== */
     footer { background-color: #800000; text-align: center; padding: 20px; margin-top: 30px; }
     footer p { font-size: 0.9rem; }
 
-    /* ===== Golden Trilingual Pop-up ===== */
-    .popup { position: fixed; top: 20px; right: 20px; background-color: gold; color: #800000; padding: 20px 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 200; display: none; animation: slideIn 0.5s forwards; }
-    .popup button { margin-top: 10px; background-color: #800000; color: gold; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-    .popup-lang { margin-top: 10px; display: flex; gap: 10px; justify-content: center; }
-    .popup-lang button { background-color: #fff; color: #800000; font-weight: 600; padding: 5px 10px; border-radius: 5px; transition: 0.3s; }
-    .popup-lang button:hover { background-color: #ffd700; }
-
-    @keyframes slideIn { 0% { transform: translateX(200px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
-
-    /* ===== Review Modal ===== */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 300; }
-    .modal-content { background-color: #2a0f0f; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-    .modal-content h2 { color: gold; margin-bottom: 20px; }
-    .modal-content input, .modal-content textarea { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: none; }
-    .modal-content button { background-color: gold; color: #800000; padding: 10px 25px; border: none; border-radius: 5px; font-weight: 600; transition: 0.3s; }
-    .modal-content button:hover { background-color: #ffd700; }
-    .close { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; color: gold; cursor: pointer; }
-
-    /* Responsive */
-    @media(max-width:768px){ .hero h1{ font-size:2rem; } .hero p{ font-size:1rem; } }
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+        .hero h1{ font-size:2rem; }
+        .hero p{ font-size:1rem; }
+        nav { flex-direction: column; align-items: flex-start; }
+        .lang-dropdown { top: 80px; right: 20px; }
+    }
 </style>
 </head>
 <body>
@@ -75,126 +53,60 @@
 <!-- Navbar -->
 <nav>
     <div class="logo">BiteHub</div>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Menu</a></li>
-        <li><a href="#">Prices</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#" id="reviewBtn">Review</a></li>
-    </ul>
+    <div class="nav-buttons">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="prices.html">Prices</a>
+    </div>
 </nav>
+
+<!-- Language Dropdown -->
+<div class="lang-dropdown">
+    <select id="languageSelect" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="ur">Urdu</option>
+        <option value="skr">Saraiki</option>
+    </select>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">
-    <h1>Delicious Fast Food Delivered to Your Door</h1>
-    <p>Fresh, Hot, and Tasty – Every Time!</p>
-    <button onclick="window.location='#prices'">Order Now</button>
+    <h1 id="heroTitle">Delicious Fast Food Delivered to Your Door</h1>
+    <p id="heroSub">Fresh, Hot, and Tasty – Every Time!</p>
+    <button onclick="window.location='menu.html'">Order Now</button>
 </section>
 
-<!-- Menu Preview -->
-<section>
-    <h2 style="text-align:center; color:gold; margin-bottom:40px;">Menu Preview</h2>
-    <div class="menu-preview">
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Pizza">
-            <h3>Margherita Pizza</h3>
-            <p>Cheesy delight with fresh tomato & basil.</p>
-            <button onclick="window.location='#prices'">Order Now</button>
-        </div>
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1617196039380-2f837c6b2f45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Burger">
-            <h3>Beef Burger</h3>
-            <p>Juicy beef patty with fresh veggies & sauce.</p>
-            <button onclick="window.location='#prices'">Order Now</button>
-        </div>
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1617196039265-5c18f3a4ef0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Fast Food">
-            <h3>French Fries</h3>
-            <p>Crispy golden fries with special ketchup.</p>
-            <button onclick="window.location='#prices'">Order Now</button>
-        </div>
-    </div>
-</section>
-
-<!-- About Preview -->
-<section class="about">
-    <h2>About BiteHub</h2>
-    <p>Your favorite corner for fresh pizza, burgers & more. Quality food, fast delivery!</p>
-    <a href="#">Read More</a>
-</section>
-
-<!-- Contact Preview -->
-<section class="contact">
-    <h2>Contact Us</h2>
-    <p>Phone: 03080432842 | Email: awaisaziz8832@gmail.com</p>
-    <a href="#">Get in Touch</a>
-</section>
+<!-- WhatsApp Popup -->
+<div class="whatsapp-popup" onclick="openWhatsApp()">Order 1 Medium Pizza, Get 1 Drink Free!</div>
 
 <!-- Footer -->
 <footer>
     <p>© 2025 BiteHub – All Rights Reserved</p>
 </footer>
 
-<!-- Golden Trilingual Pop-up -->
-<div class="popup" id="offerPopup">
-    <div id="popupText">Order 1 Medium Pizza, Get 1 Drink Free!</div>
-    <div class="popup-lang">
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('ur')">Urdu</button>
-        <button onclick="changeLanguage('skr')">Saraiki</button>
-    </div>
-    <button onclick="document.getElementById('offerPopup').style.display='none'">Close</button>
-</div>
-
-<!-- Review Modal -->
-<div class="modal" id="reviewModal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h2>Submit Your Review</h2>
-        <input type="text" id="reviewName" placeholder="Your Name">
-        <input type="number" id="reviewRating" placeholder="Rating (1-5)">
-        <textarea id="reviewMessage" rows="4" placeholder="Your Message"></textarea>
-        <button onclick="sendReview()">Submit via WhatsApp</button>
-    </div>
-</div>
-
 <script>
-    // ===== Show popup on page load =====
-    window.onload = function() {
-        document.getElementById('offerPopup').style.display = 'block';
-    }
-
-    // ===== Language switcher =====
-    function changeLanguage(lang){
-        let text = '';
-        if(lang==='en'){ text = 'Order 1 Medium Pizza, Get 1 Drink Free!'; }
-        else if(lang==='ur'){ text = 'ایک درمیانی پیزا آرڈر کریں، ایک ڈرنک مفت حاصل کریں!'; }
-        else if(lang==='skr'){ text = 'اک درمیانی پیزا منگو، اک مشروب مفت حاصل کرو!'; }
-        document.getElementById('popupText').innerText = text;
-    }
-
-    // ===== Review Modal =====
-    const reviewBtn = document.getElementById('reviewBtn');
-    const modal = document.getElementById('reviewModal');
-    const closeModal = document.getElementById('closeModal');
-
-    reviewBtn.onclick = () => modal.style.display = 'flex';
-    closeModal.onclick = () => modal.style.display = 'none';
-    window.onclick = (e) => { if(e.target==modal) modal.style.display='none'; }
-
-    // ===== WhatsApp Review Submit =====
-    function sendReview(){
-        const name = document.getElementById('reviewName').value;
-        const rating = document.getElementById('reviewRating').value;
-        const message = document.getElementById('reviewMessage').value;
-        if(name && rating && message){
-            const text = `Hi, I want to submit my review:%0AName: ${name}%0ARating: ${rating}%0AMessage: ${message}`;
-            window.open(`https://wa.me/03080432842?text=${text}`, '_blank');
-            modal.style.display = 'none';
-        } else {
-            alert('Please fill all fields');
+    // ===== Language Change =====
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSub = document.getElementById('heroSub');
+    function changeLanguage(){
+        const lang = document.getElementById('languageSelect').value;
+        if(lang==='en'){
+            heroTitle.textContent = 'Delicious Fast Food Delivered to Your Door';
+            heroSub.textContent = 'Fresh, Hot, and Tasty – Every Time!';
+        } else if(lang==='ur'){
+            heroTitle.textContent = 'مزیدار فاسٹ فوڈ آپ کے دروازے پر فراہم کیا جاتا ہے';
+            heroSub.textContent = 'تازہ، گرم، اور مزیدار – ہر بار!';
+        } else if(lang==='skr'){
+            heroTitle.textContent = 'مزیدار فاسٹ فوڈ تھوڈے دروازے تے پہنچائے ویندے ہے';
+            heroSub.textContent = 'تازہ، گرم، تے مزیدار – ہر وار!';
         }
+    }
+
+    // ===== WhatsApp Popup Click =====
+    function openWhatsApp(){
+        const text = encodeURIComponent("Hi, I want to order 1 Medium Pizza & claim free drink!");
+        window.open(`https://wa.me/03080432842?text=${text}`, '_blank');
     }
 </script>
 
