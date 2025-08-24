@@ -7,52 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== Global ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { background-color: #1a0b0b; color: #fff; overflow-x: hidden; }
-a { text-decoration: none; color: inherit; }
-button { cursor: pointer; border: none; outline: none; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background-color:#1a0b0b; color:#fff; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; border:none; outline:none; }
 
 /* ===== Navbar ===== */
-nav { background-color: #800000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
-nav .logo { font-size: 1.8rem; font-weight: 700; color: gold; }
-.nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
-.nav-buttons a { background-color: gold; color: #800000; padding: 8px 15px; border-radius: 5px; font-weight: 600; transition: 0.3s; display: inline-block; }
-.nav-buttons a:hover { transform: scale(1.1); box-shadow: 0 0 10px gold; }
+nav { background-color:#800000; display:flex; justify-content:space-between; align-items:center; padding:15px 30px; position:sticky; top:0; z-index:100; flex-wrap:wrap; }
+nav .logo { font-size:1.8rem; font-weight:700; color:gold; }
+.nav-buttons { display:flex; gap:10px; flex-wrap:wrap; }
+.nav-buttons a { background-color:gold; color:#800000; padding:8px 15px; border-radius:5px; font-weight:600; transition:0.3s; display:inline-block; text-align:center; }
+.nav-buttons a:hover { transform:scale(1.1); box-shadow:0 0 10px gold; }
 
 /* ===== Language Dropdown ===== */
-.lang-dropdown { position: absolute; top: 20px; right: 30px; z-index: 200; }
-.lang-dropdown select { padding: 6px 12px; border-radius: 5px; border: none; font-weight: 600; background-color: gold; color: #800000; }
+.lang-dropdown { position:absolute; top:15px; right:30px; z-index:200; }
+.lang-dropdown select { padding:6px 12px; border-radius:5px; border:none; font-weight:600; background-color:gold; color:#800000; }
 
-/* ===== Hero Section ===== */
-.hero { position: relative; height: 90vh; display: flex; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
-.hero img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; filter: brightness(0.6); animation: zoom 20s infinite alternate; }
-@keyframes zoom { 0%{transform:scale(1)} 100%{transform:scale(1.1)} }
-
-.hero-content { position: relative; z-index: 2; color: gold; animation: fadeIn 2s ease-in-out; }
-@keyframes fadeIn { 0%{opacity:0; transform: translateY(-20px)} 100%{opacity:1; transform: translateY(0)} }
-
-.hero-content h1 { font-size: 3rem; margin-bottom: 15px; }
-.hero-content p { font-size: 1.3rem; margin-bottom: 25px; color: #fff; text-shadow: 1px 1px #000; }
-
-.hero-content .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-.hero-content .hero-buttons button { background-color: gold; color: #800000; padding: 12px 25px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
-.hero-content .hero-buttons button:hover { transform: scale(1.1); background-color: #ffd700; }
+/* ===== Hero Carousel ===== */
+.hero { position:relative; height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
+.hero img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter:brightness(0.6); opacity:0; transition:opacity 1s ease-in-out; }
+.hero img.active { opacity:1; }
+.hero-content { position:relative; z-index:2; color:gold; animation:fadeIn 2s ease-in-out; }
+@keyframes fadeIn { 0%{opacity:0; transform:translateY(-20px);} 100%{opacity:1; transform:translateY(0);} }
+.hero-content h1 { font-size:3rem; margin-bottom:15px; }
+.hero-content p { font-size:1.3rem; margin-bottom:25px; color:#fff; text-shadow:1px 1px #000; }
+.hero-content .hero-buttons { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+.hero-content .hero-buttons button { background-color:gold; color:#800000; padding:12px 25px; border-radius:5px; font-weight:600; transition:0.3s; }
+.hero-content .hero-buttons button:hover { transform:scale(1.1); background-color:#ffd700; }
 
 /* ===== WhatsApp Popup ===== */
-.whatsapp-popup { position: fixed; bottom: 20px; right: 20px; background-color: gold; color: #800000; padding: 15px 25px; border-radius: 10px; font-weight: 600; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 200; cursor: pointer; animation: popupAnim 0.7s ease-in-out; transition: 0.3s; }
-.whatsapp-popup:hover { transform: scale(1.05); background-color: #ffd700; }
-@keyframes popupAnim { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+.whatsapp-popup { position:fixed; bottom:20px; right:20px; background-color:gold; color:#800000; padding:15px 25px; border-radius:10px; font-weight:600; box-shadow:0 0 15px rgba(0,0,0,0.5); z-index:200; cursor:pointer; animation:popupAnim 0.7s ease-in-out; transition:0.3s; }
+.whatsapp-popup:hover { transform:scale(1.05); background-color:#ffd700; }
+@keyframes popupAnim { 0%{transform:translateY(50px);opacity:0;}100%{transform:translateY(0);opacity:1;} }
 
 /* ===== Footer ===== */
-footer { background-color: #800000; text-align: center; padding: 20px; margin-top: 30px; }
-footer p { font-size: 0.9rem; }
+footer { background-color:#800000; text-align:center; padding:20px; margin-top:30px; }
+footer p { font-size:0.9rem; }
 
 /* ===== Responsive ===== */
 @media(max-width:768px){
     .hero-content h1{ font-size:2rem; }
     .hero-content p{ font-size:1rem; }
-    nav { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .lang-dropdown { top: 80px; right: 20px; }
+    nav { flex-direction:column; align-items:flex-start; gap:10px; }
+    .lang-dropdown { top:70px; right:20px; }
 }
 </style>
 </head>
@@ -80,7 +77,9 @@ footer p { font-size: 0.9rem; }
 
 <!-- Hero Section -->
 <section class="hero">
-    <img src="https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Fast Food">
+    <img src="https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="active" alt="Pizza">
+    <img src="https://images.unsplash.com/photo-1617196038762-b8e5fa29e3da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Burger">
+    <img src="https://images.unsplash.com/photo-1617196038701-9b7e873a8ff7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" alt="Fries">
     <div class="hero-content">
         <h1 id="heroTitle">خوش آمدید</h1>
         <p id="heroSub">Hot & Tasty Fast Food Delivered!</p>
@@ -99,33 +98,40 @@ footer p { font-size: 0.9rem; }
 </footer>
 
 <script>
-    // ===== Language Change =====
-    const heroTitle = document.getElementById('heroTitle');
-    const heroSub = document.getElementById('heroSub');
-    function changeLanguage(){
-        const lang = document.getElementById('languageSelect').value;
-        if(lang==='en'){
-            heroTitle.textContent = 'Welcome';
-            heroSub.textContent = 'Hot & Tasty Fast Food Delivered!';
-        } else if(lang==='ur'){
-            heroTitle.textContent = 'خوش آمدید';
-            heroSub.textContent = 'گرم اور مزیدار فاسٹ فوڈ فراہم کیا جاتا ہے!';
-        } else if(lang==='skr'){
-            heroTitle.textContent = 'خوش آمدید';
-            heroSub.textContent = 'گرم تے مزیدار فاسٹ فوڈ پہنچائے ویندے ہے!';
-        }
+// ===== Language Change =====
+const heroTitle = document.getElementById('heroTitle');
+const heroSub = document.getElementById('heroSub');
+function changeLanguage(){
+    const lang = document.getElementById('languageSelect').value;
+    if(lang==='en'){
+        heroTitle.textContent = 'Welcome';
+        heroSub.textContent = 'Hot & Tasty Fast Food Delivered!';
+    } else if(lang==='ur'){
+        heroTitle.textContent = 'خوش آمدید';
+        heroSub.textContent = 'گرم اور مزیدار فاسٹ فوڈ فراہم کیا جاتا ہے!';
+    } else if(lang==='skr'){
+        heroTitle.textContent = 'خوش آمدید';
+        heroSub.textContent = 'گرم تے مزیدار فاسٹ فوڈ پہنچائے ویندے ہے!';
     }
+}
 
-    // ===== WhatsApp Popup Click =====
-    function openWhatsApp(){
-        const text = encodeURIComponent("Hi, I want to order 1 Medium Pizza & claim free drink!");
-        window.open(`https://wa.me/03080432842?text=${text}`, '_blank');
-    }
+// ===== WhatsApp Popup Click =====
+function openWhatsApp(){
+    const text = encodeURIComponent("Hi, I want to order 1 Medium Pizza & claim free drink!");
+    window.open(`https://wa.me/03080432842?text=${text}`, '_blank');
+}
 
-    // ===== Show popup on page load =====
-    window.onload = () => {
-        document.getElementById('whatsappPopup').style.display = 'block';
-    }
+// ===== Show popup on page load =====
+window.onload = () => { document.getElementById('whatsappPopup').style.display = 'block'; }
+
+// ===== Hero Image Carousel =====
+let slides = document.querySelectorAll('.hero img');
+let current = 0;
+setInterval(()=>{
+    slides[current].classList.remove('active');
+    current = (current+1)%slides.length;
+    slides[current].classList.add('active');
+},4000);
 </script>
 
 </body>
