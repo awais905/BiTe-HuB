@@ -6,46 +6,48 @@
 <title>BiteHub - Home</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    /* ===== Global Styles ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background-color: #1a0b0b; color: #fff; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    button { cursor: pointer; }
+/* ===== Global Styles ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: #1a0b0b; color: #fff; line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; outline: none; }
 
-    /* ===== Navbar ===== */
-    nav { background-color: #800000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
-    nav .logo { font-size: 1.8rem; font-weight: 700; color: gold; }
-    .nav-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-    .nav-buttons a { background-color: gold; color: #800000; padding: 10px 20px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
-    .nav-buttons a:hover { background-color: #ffd700; }
+/* ===== Navbar ===== */
+nav { background-color: #800000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
+nav .logo { font-size: 1.8rem; font-weight: 700; color: gold; }
+.nav-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.nav-buttons a { background-color: gold; color: #800000; padding: 8px 15px; border-radius: 5px; font-weight: 600; transition: 0.3s; display: inline-block; }
+.nav-buttons a:hover { transform: scale(1.1); box-shadow: 0 0 10px gold; }
 
-    /* ===== Hero Section ===== */
-    .hero { background: url('https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-    .hero h1 { font-size: 3rem; margin-bottom: 20px; color: gold; text-shadow: 2px 2px #000; }
-    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
-    .hero button { background-color: gold; color: #800000; padding: 15px 30px; border: none; font-weight: 600; border-radius: 5px; transition: 0.3s; }
-    .hero button:hover { background-color: #ffd700; }
+/* ===== Hero Section ===== */
+.hero { background: url('https://images.unsplash.com/photo-1606755962770-44b72c5b8e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; position: relative; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; color: gold; text-shadow: 2px 2px #000; }
+.hero p { font-size: 1.1rem; margin-bottom: 25px; }
 
-    /* ===== Language Dropdown ===== */
-    .lang-dropdown { position: absolute; top: 20px; right: 30px; }
-    .lang-dropdown select { padding: 8px 12px; border-radius: 5px; border: none; font-weight: 600; }
+/* Hero Order Now Button */
+.hero button { background-color: gold; color: #800000; padding: 12px 25px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
+.hero button:hover { transform: scale(1.1); background-color: #ffd700; }
 
-    /* ===== WhatsApp Pop-up ===== */
-    .whatsapp-popup { position: fixed; bottom: 20px; right: 20px; background-color: gold; color: #800000; padding: 15px 25px; border-radius: 10px; font-weight: 600; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 200; animation: popupAnim 0.7s ease-in-out; cursor: pointer; }
-    @keyframes popupAnim { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    .whatsapp-popup:hover { background-color: #ffd700; }
+/* ===== Language Dropdown ===== */
+.lang-dropdown { position: absolute; top: 20px; right: 30px; }
+.lang-dropdown select { padding: 6px 12px; border-radius: 5px; border: none; font-weight: 600; background-color: gold; color: #800000; }
 
-    /* ===== Footer ===== */
-    footer { background-color: #800000; text-align: center; padding: 20px; margin-top: 30px; }
-    footer p { font-size: 0.9rem; }
+/* ===== WhatsApp Popup ===== */
+.whatsapp-popup { position: fixed; bottom: 20px; right: 20px; background-color: gold; color: #800000; padding: 15px 25px; border-radius: 10px; font-weight: 600; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 200; cursor: pointer; animation: popupAnim 0.7s ease-in-out; transition: 0.3s; }
+.whatsapp-popup:hover { transform: scale(1.05); background-color: #ffd700; }
+@keyframes popupAnim { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 
-    /* ===== Responsive ===== */
-    @media(max-width:768px){
-        .hero h1{ font-size:2rem; }
-        .hero p{ font-size:1rem; }
-        nav { flex-direction: column; align-items: flex-start; }
-        .lang-dropdown { top: 80px; right: 20px; }
-    }
+/* ===== Footer ===== */
+footer { background-color: #800000; text-align: center; padding: 20px; margin-top: 30px; }
+footer p { font-size: 0.9rem; }
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+    .hero h1{ font-size:2rem; }
+    .hero p{ font-size:1rem; }
+    nav { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .lang-dropdown { top: 80px; right: 20px; }
+}
 </style>
 </head>
 <body>
@@ -72,13 +74,13 @@
 
 <!-- Hero Section -->
 <section class="hero">
-    <h1 id="heroTitle">Delicious Fast Food Delivered to Your Door</h1>
-    <p id="heroSub">Fresh, Hot, and Tasty – Every Time!</p>
+    <h1 id="heroTitle">Hot & Tasty Fast Food Delivered!</h1>
+    <p id="heroSub">Fresh, Delicious, Every Time!</p>
     <button onclick="window.location='menu.html'">Order Now</button>
 </section>
 
 <!-- WhatsApp Popup -->
-<div class="whatsapp-popup" onclick="openWhatsApp()">Order 1 Medium Pizza, Get 1 Drink Free!</div>
+<div class="whatsapp-popup" id="whatsappPopup" onclick="openWhatsApp()">Order 1 Medium Pizza, Get 1 Drink Free!</div>
 
 <!-- Footer -->
 <footer>
@@ -92,14 +94,14 @@
     function changeLanguage(){
         const lang = document.getElementById('languageSelect').value;
         if(lang==='en'){
-            heroTitle.textContent = 'Delicious Fast Food Delivered to Your Door';
-            heroSub.textContent = 'Fresh, Hot, and Tasty – Every Time!';
+            heroTitle.textContent = 'Hot & Tasty Fast Food Delivered!';
+            heroSub.textContent = 'Fresh, Delicious, Every Time!';
         } else if(lang==='ur'){
-            heroTitle.textContent = 'مزیدار فاسٹ فوڈ آپ کے دروازے پر فراہم کیا جاتا ہے';
-            heroSub.textContent = 'تازہ، گرم، اور مزیدار – ہر بار!';
+            heroTitle.textContent = 'گرم اور مزیدار فاسٹ فوڈ فراہم کیا جاتا ہے!';
+            heroSub.textContent = 'تازہ، مزیدار، ہر بار!';
         } else if(lang==='skr'){
-            heroTitle.textContent = 'مزیدار فاسٹ فوڈ تھوڈے دروازے تے پہنچائے ویندے ہے';
-            heroSub.textContent = 'تازہ، گرم، تے مزیدار – ہر وار!';
+            heroTitle.textContent = 'گرم تے مزیدار فاسٹ فوڈ پہنچائے ویندے ہے!';
+            heroSub.textContent = 'تازہ، مزیدار، ہر وار!';
         }
     }
 
@@ -107,6 +109,11 @@
     function openWhatsApp(){
         const text = encodeURIComponent("Hi, I want to order 1 Medium Pizza & claim free drink!");
         window.open(`https://wa.me/03080432842?text=${text}`, '_blank');
+    }
+
+    // ===== Show popup on page load =====
+    window.onload = () => {
+        document.getElementById('whatsappPopup').style.display = 'block';
     }
 </script>
 
